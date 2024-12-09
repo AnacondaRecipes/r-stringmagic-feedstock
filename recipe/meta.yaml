@@ -21,8 +21,8 @@ build:
 
 requirements:
   build:
-    - cross-r-base {{ r_base }}  # [build_platform != target_platform]
-    - r-rcpp                     # [build_platform != target_platform]
+#    - cross-r-base {{ r_base }}  # [build_platform != target_platform]
+#    - r-rcpp                     # [build_platform != target_platform]
     - {{ compiler('c') }}          # [not win]
 #    - {{ stdlib("c") }}            # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
@@ -34,7 +34,7 @@ requirements:
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
-    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+#    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base {{ rbase }}
     - r-rcpp >=1.0.5
