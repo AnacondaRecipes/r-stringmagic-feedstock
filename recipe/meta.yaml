@@ -58,5 +58,10 @@ about:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/58810
+    reason: Dependency for r-dreamerr
+  recipe-maintainers:
+    - ianaobi
   recipe-maintainers:
     - conda-forge/r
