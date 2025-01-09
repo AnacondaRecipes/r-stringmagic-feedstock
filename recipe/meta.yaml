@@ -67,5 +67,6 @@ extra:
     reason: Dependency for r-dreamerr
   recipe-maintainers:
     - ianaobi
+    - bkreider
   recipe-maintainers:
     - conda-forge/r
