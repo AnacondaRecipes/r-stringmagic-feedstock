@@ -38,11 +38,11 @@ requirements:
     - {{ posix }}zip               # [win]
 #    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
-    - r-base 
+    - r-base {{ rbase }}
    # - r-rcpp >=1.0.5
     - r-rcpp
   run:
-    - r-base 
+    - r-base {{ rbase }}
     #- r-rcpp >=1.0.5
     - r-rcpp
 
