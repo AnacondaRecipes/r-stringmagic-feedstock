@@ -6,10 +6,12 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  url:
-    - {{ cran_mirror }}/src/contrib/stringmagic_{{ version }}.tar.gz
-    - {{ cran_mirror }}/src/contrib/Archive/stringmagic/stringmagic_{{ version }}.tar.gz
+  url: https://cran.r-project.org/src/contrib/stringmagic_{{ version }}.tar.gz
   sha256: eed1c04aa99be5a99ecfdd32498279f170e261669cc1b91d18673454064b8f8c
+  #url:
+  #  - {{ cran_mirror }}/src/contrib/stringmagic_{{ version }}.tar.gz
+  #  - {{ cran_mirror }}/src/contrib/Archive/stringmagic/stringmagic_{{ version }}.tar.gz
+  #sha256: eed1c04aa99be5a99ecfdd32498279f170e261669cc1b91d18673454064b8f8c
 
 build:
   number: 1
@@ -21,10 +23,10 @@ build:
 
 requirements:
   build:
-    - cross-r-base {{ r_base }}  # [build_platform != target_platform]
-    - r-rcpp                     # [build_platform != target_platform]
+#    - cross-r-base {{ r_base }}  # [build_platform != target_platform]
+#    - r-rcpp                     # [build_platform != target_platform]
     - {{ compiler('c') }}          # [not win]
-    - {{ stdlib("c") }}            # [not win]
+#    - {{ stdlib("c") }}            # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
     - {{ stdlib("c") }}            # [win]
     - {{ compiler('cxx') }}        # [not win]
@@ -34,13 +36,15 @@ requirements:
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
-    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+#    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
-    - r-base
-    - r-rcpp >=1.0.5
+    - r-base {{ r_version }}
+   # - r-rcpp >=1.0.5
+    - r-rcpp
   run:
-    - r-base
-    - r-rcpp >=1.0.5
+    - r-base {{ r_version }}
+    #- r-rcpp >=1.0.5
+    - r-rcpp
 
 test:
   commands:
@@ -58,5 +62,11 @@ about:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/58810
+    reason: Dependency for r-dreamerr
+  recipe-maintainers:
+    - ianaobi
+    - bkreider
   recipe-maintainers:
     - conda-forge/r
